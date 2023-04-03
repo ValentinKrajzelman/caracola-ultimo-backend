@@ -17,6 +17,6 @@ const tallerSchema = mongoose.Schema({
     },
 })
 
-let tallerModel = mongoose.model('tallerModel', tallerSchema);
+let tallerModelo = mongoose.model('tallerModelo', tallerSchema);
 
-export default tallerModel;
+export default tallerModelo;

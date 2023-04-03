@@ -1,6 +1,6 @@
 import express from 'express';
 
-import { getTalleres, createTalleres, getTaller, updateTalleres, deleteTalleres } from '../controllers/noticiasController.js';
+import { getTalleres, createTalleres, getTaller, updateTalleres, deleteTalleres } from '../controllers/talleresController.js';
 
 const router = express.Router();
 

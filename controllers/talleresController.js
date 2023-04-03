@@ -1,65 +1,65 @@
 import express from 'express';
 import mongoose from 'mongoose';
 
-import EventoModelo from '../models/evento.js';
+import tallerModelo from '../models/taller.js';
 
 const router = express.Router();
 
-export const getEventos = async (req, res) => {
+export const getTalleres = async (req, res) => {
     try {
-        const eventos = await EventoModelo.find();
-        res.status(200).json(eventos);
+        const tallers = await tallerModelo.find();
+        res.status(200).json(tallers);
     } catch (error) {
         res.status(404).json({ message: error.message });
     }
 }
 
-export const createEventos = async (req, res) => {
+export const createTalleres = async (req, res) => {
 
     const { descripcion, nombre, fecha, URL } = req.body;
-    const newEvento = new EventoModelo({ descripcion, nombre, fecha, URL });
+    const newtaller = new tallerModelo({ descripcion, nombre, fecha, URL });
 
     try {
-        await newEvento.save();
-        res.status(200).json(newEvento);
+        await newtaller.save();
+        res.status(200).json(newtaller);
     } catch (error) {
         res.status(404).json({ message: error.message });
     }
 }
 
-export const getEvento = async (req, res) => {
+export const getTaller = async (req, res) => {
     const { id } = req.params;
 
     try {
-        const evento = await EventoModelo.find({ _id: id });
-        res.status(200).json(evento);
+        const taller = await tallerModelo.find({ _id: id });
+        res.status(200).json(taller);
     } catch (error) {
         res.status(404).json({ message: error.message });
     }
 }
 
-export const updateEventos = async (req, res) => {
+export const updateTalleres = async (req, res) => {
     const { id } = req.params;
     if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ` + id);
     const { nombre, descripcion, fecha, URL, selectedFile } = req.body;
-    const eventoUpdate = { nombre, descripcion, fecha, URL, selectedFile, _id: id };
+    const tallerUpdate = { nombre, descripcion, fecha, URL, selectedFile, _id: id };
 
     try {
-        await EventoModelo.findByIdAndUpdate(id, eventoUpdate, { new: true });
-        res.status(200).json(eventoUpdate);
+        await tallerModelo.findByIdAndUpdate(id, tallerUpdate, { new: true });
+        res.status(200).json(tallerUpdate);
     } catch (error) {
         res.status(404).json({ message: error.message });
     }
 }
 
-export const deleteEventos = async (req, res) => {
+export const deleteTalleres = async (req, res) => {
 
     const { id } = req.params;
 
     if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ` + id);
 
     try {
-        await EventoModelo.findByIdAndRemove(id);
+        await tallerModelo.findByIdAndRemove(id);
         res.status(200).json("Post " + id + " removed successfully");
     } catch (error) {
         res.status(404).json({ message: error.message });

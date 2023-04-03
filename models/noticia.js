@@ -17,6 +17,6 @@ const noticiaSchema = mongoose.Schema({
     },
 })
 
-let noticiaModel = mongoose.model('noticiaModel', noticiaSchema);
+let noticiaModelo = mongoose.model('noticiaModelo', noticiaSchema);
 
-export default noticiaModel;
+export default noticiaModelo;

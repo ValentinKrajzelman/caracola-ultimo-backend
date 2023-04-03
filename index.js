@@ -9,27 +9,28 @@ import cors from "cors";
 import { v2 } from 'cloudinary';
 
 import eventosRoutes from './routes/eventosRoutes.js';
-// import postRoutes from './routes/noticiasRoutes.js';
-// import postRoutes from './routes/talleresRoutes.js';
+import noticiasRoutes from './routes/noticiasRoutes.js';
+import talleresRoutes from './routes/talleresRoutes.js';
 
 const app = express();
 
-v2.config({
-  cloud_name: process.env.CLOUND_NAME,
-  api_key: process.env.API_KEY,
-  api_secret: process.env.API_SECRET,
-  secure: true,
-})
+//quizas combiene hacer la integracion con cloudinary directamente en el cliente
+//asi no tengo que pagar por doble en servicios cloud por trafico de imagenes
+
+// v2.config({
+//   cloud_name: process.env.CLOUND_NAME,
+//   api_key: process.env.API_KEY,
+//   api_secret: process.env.API_SECRET,
+//   secure: true,
+// })
 
 app.use(bodyParser.json({ limit: '30mb', extended: true }))
 app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }))
 app.use(cors());
 
 app.use('/eventos', eventosRoutes);
-// app.use('/noticias', eventosRoutes);
-// app.use('/talleres', eventosRoutes);
-
-// const CONNECTION_URL = 'mongodb+srv://valentinkrajzelman:x6MYYndOxAtpJEwC@dbmemorias.acfpnm5.mongodb.net/?retryWrites=true&w=majority';
+app.use('/noticias', noticiasRoutes);
+app.use('/talleres', talleresRoutes);
 
 const PORT = process.env.PORT || 5000;
 

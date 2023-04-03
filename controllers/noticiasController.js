@@ -1,65 +1,65 @@
 import express from 'express';
 import mongoose from 'mongoose';
 
-import EventoModelo from '../models/evento.js';
+import noticiaModelo from '../models/noticia.js';
 
 const router = express.Router();
 
-export const getEventos = async (req, res) => {
+export const getNoticias = async (req, res) => {
     try {
-        const eventos = await EventoModelo.find();
-        res.status(200).json(eventos);
+        const noticias = await noticiaModelo.find();
+        res.status(200).json(noticias);
     } catch (error) {
         res.status(404).json({ message: error.message });
     }
 }
 
-export const createEventos = async (req, res) => {
+export const createNoticias = async (req, res) => {
 
     const { descripcion, nombre, fecha, URL } = req.body;
-    const newEvento = new EventoModelo({ descripcion, nombre, fecha, URL });
+    const newnoticia = new noticiaModelo({ descripcion, nombre, fecha, URL });
 
     try {
-        await newEvento.save();
-        res.status(200).json(newEvento);
+        await newnoticia.save();
+        res.status(200).json(newnoticia);
     } catch (error) {
         res.status(404).json({ message: error.message });
     }
 }
 
-export const getEvento = async (req, res) => {
+export const getNoticia = async (req, res) => {
     const { id } = req.params;
 
     try {
-        const evento = await EventoModelo.find({ _id: id });
-        res.status(200).json(evento);
+        const noticia = await noticiaModelo.find({ _id: id });
+        res.status(200).json(noticia);
     } catch (error) {
         res.status(404).json({ message: error.message });
     }
 }
 
-export const updateEventos = async (req, res) => {
+export const updateNoticias = async (req, res) => {
     const { id } = req.params;
     if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ` + id);
     const { nombre, descripcion, fecha, URL, selectedFile } = req.body;
-    const eventoUpdate = { nombre, descripcion, fecha, URL, selectedFile, _id: id };
+    const noticiaUpdate = { nombre, descripcion, fecha, URL, selectedFile, _id: id };
 
     try {
-        await EventoModelo.findByIdAndUpdate(id, eventoUpdate, { new: true });
-        res.status(200).json(eventoUpdate);
+        await noticiaModelo.findByIdAndUpdate(id, noticiaUpdate, { new: true });
+        res.status(200).json(noticiaUpdate);
     } catch (error) {
         res.status(404).json({ message: error.message });
     }
 }
 
-export const deleteEventos = async (req, res) => {
+export const deleteNoticias = async (req, res) => {
 
     const { id } = req.params;
 
     if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ` + id);
 
     try {
-        await EventoModelo.findByIdAndRemove(id);
+        await noticiaModelo.findByIdAndRemove(id);
         res.status(200).json("Post " + id + " removed successfully");
     } catch (error) {
         res.status(404).json({ message: error.message });
