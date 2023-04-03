@@ -1,13 +1,15 @@
 import mongoose from 'mongoose';
 
-const postSchema = mongoose.Schema({
+const eventoSchema = mongoose.Schema({
     descripcion: String,
     nombre: String,
-    tags: [String],
-    selectedFile: String,
-    likeCount: {
-        type: Number,
-        default: 0,
+    fecha: {
+        type: String,
+        default: null,
+    },
+    URL: {
+        type: String,
+        default: "http://res.cloudinary.com/demo/image/upload/couple.jpg",
     },
     createdAt: {
         type: Date,
@@ -15,6 +17,6 @@ const postSchema = mongoose.Schema({
     },
 })
 
-var PostMessage = mongoose.model('PostMessage', postSchema);
+let eventoModel = mongoose.model('eventoModel', eventoSchema);
 
-export default PostMessage;
+export default eventoModel;
