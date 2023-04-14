@@ -1,22 +1,26 @@
 import mongoose from 'mongoose';
 
-const postSchema = mongoose.Schema({
+const tallerSchema = mongoose.Schema({
     descripcion: String,
     nombre: String,
-    tags: [String],
-    selectedFile: String,
-    likeCount: {
-        type: Number,
-        default: 0,
+    fecha: {
+        type: String,
+        default: null,
     },
-    URL: String,
-    thumbnail: String,
+    URL: {
+        type: String,
+        default: "http://res.cloudinary.com/demo/image/upload/couple.jpg",
+    },
+    URLthumbnail: {
+        type: String,
+        default: "http://res.cloudinary.com/demo/image/upload/couple.jpg",
+    },
     createdAt: {
         type: Date,
         default: new Date(),
     },
 })
 
-var PostMessage = mongoose.model('PostMessage', postSchema);
+let tallerModelo = mongoose.model('tallerModelo', tallerSchema);
 
-export default PostMessage;
+export default tallerModelo;
