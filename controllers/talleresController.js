@@ -16,8 +16,8 @@ export const getTalleres = async (req, res) => {
 
 export const createTalleres = async (req, res) => {
 
-    const { descripcion, nombre, fecha, URL } = req.body;
-    const newtaller = new tallerModelo({ descripcion, nombre, fecha, URL });
+    const { descripcion, nombre, fecha, URL, URLthumbnail } = req.body;
+    const newtaller = new tallerModelo({ descripcion, nombre, fecha, URL, URLthumbnail });
 
     try {
         await newtaller.save();
@@ -41,8 +41,8 @@ export const getTaller = async (req, res) => {
 export const updateTalleres = async (req, res) => {
     const { id } = req.params;
     if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ` + id);
-    const { nombre, descripcion, fecha, URL, selectedFile } = req.body;
-    const tallerUpdate = { nombre, descripcion, fecha, URL, selectedFile, _id: id };
+    const { nombre, descripcion, fecha, URL, URLthumbnail } = req.body;
+    const tallerUpdate = { nombre, descripcion, fecha, URL, URLthumbnail, _id: id };
 
     try {
         await tallerModelo.findByIdAndUpdate(id, tallerUpdate, { new: true });

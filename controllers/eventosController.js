@@ -16,8 +16,8 @@ export const getEventos = async (req, res) => {
 
 export const createEventos = async (req, res) => {
 
-    const { descripcion, nombre, fecha, URL } = req.body;
-    const newEvento = new EventoModelo({ descripcion, nombre, fecha, URL });
+    const { descripcion, nombre, fecha, URL, URLthumbnail } = req.body;
+    const newEvento = new EventoModelo({ descripcion, nombre, fecha, URL , URLthumbnail});
 
     try {
         await newEvento.save();
@@ -41,8 +41,8 @@ export const getEvento = async (req, res) => {
 export const updateEventos = async (req, res) => {
     const { id } = req.params;
     if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ` + id);
-    const { nombre, descripcion, fecha, URL, selectedFile } = req.body;
-    const eventoUpdate = { nombre, descripcion, fecha, URL, selectedFile, _id: id };
+    const { nombre, descripcion, fecha, URL, URLthumbnail } = req.body;
+    const eventoUpdate = { nombre, descripcion, fecha, URL, URLthumbnail, _id: id };
 
     try {
         await EventoModelo.findByIdAndUpdate(id, eventoUpdate, { new: true });
