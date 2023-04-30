@@ -15,6 +15,7 @@ import talleresRoutes from './routes/talleresRoutes.js';
 
 const app = express();
 
+// aca se toma el req en json y se crea el req.body que consumimos en los controllers 
 app.use(bodyParser.json({ limit: '30mb', extended: true }))
 app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }))
 app.use(cors());
