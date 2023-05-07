@@ -43,7 +43,7 @@ export const updateEventos = async (req, res) => {
     if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ` + id);
     const { nombre, descripcion, fecha, URL, URLthumbnail } = req.body;
     const eventoUpdate = { nombre, descripcion, fecha, URL, URLthumbnail, _id: id };
-
+    console.log(req.body)
     try {
         await EventoModelo.findByIdAndUpdate(id, eventoUpdate, { new: true });
         res.status(200).json(eventoUpdate);

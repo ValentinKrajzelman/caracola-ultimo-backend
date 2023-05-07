@@ -1,3 +1,4 @@
+import { Timestamp } from 'mongodb';
 import mongoose from 'mongoose';
 
 const eventoSchema = mongoose.Schema({
@@ -5,7 +6,7 @@ const eventoSchema = mongoose.Schema({
     nombre: String,
     fecha: {
         type: String,
-        default: null,
+        default:  new Date(),
     },
     URL: {
         type: String,
