@@ -7,8 +7,6 @@ import mongoose from "mongoose";
 import cors from "cors";
 
 
-import { v2 } from 'cloudinary';
-
 import eventosRoutes from './routes/eventosRoutes.js';
 import noticiasRoutes from './routes/noticiasRoutes.js';
 import talleresRoutes from './routes/talleresRoutes.js';
