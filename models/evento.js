@@ -14,7 +14,7 @@ const eventoSchema = mongoose.Schema({
     },
     URLthumbnail: {
         type: String,
-        default: "http://res.cloudinary.com/demo/image/upload/couple.jpg",
+        default: "/imgDefault.jpg",
     },
     createdAt: {
         type: Date,
