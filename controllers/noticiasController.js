@@ -18,7 +18,7 @@ export const createNoticias = async (req, res) => {
 
     const { descripcion, nombre, fecha, URL, URLthumbnail } = req.body;
     const newnoticia = new noticiaModelo({ descripcion, nombre, fecha, URL, URLthumbnail });
-
+    console.log(newnoticia);
     try {
         await newnoticia.save();
         res.status(200).json(newnoticia);

@@ -9,11 +9,11 @@ const noticiaSchema = mongoose.Schema({
     },
     URL: {
         type: String,
-        default: "http://res.cloudinary.com/demo/image/upload/couple.jpg",
+        default: "/imgDefault.jpg",
     },
     URLthumbnail: {
         type: String,
-        default: "/imgDefault.jpg",
+        default: "/imgDefaultThumbnail.jpg",
     },
     createdAt: {
         type: Date,
