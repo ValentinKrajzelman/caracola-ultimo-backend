@@ -23,7 +23,7 @@ app.use("/talleres", talleresRoutes);
 
 app.get("/", async (req, res) => {
   return res.status(200).json({
-    msg: "Ok",
+    msg: "Ok de nuevo",
     data,
   });
 });
