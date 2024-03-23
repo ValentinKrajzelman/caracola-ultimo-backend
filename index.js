@@ -1,6 +1,7 @@
 import * as dotenv from "dotenv";
 dotenv.config();
 
+import OpenAI from "openai";
 import express from "express";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
