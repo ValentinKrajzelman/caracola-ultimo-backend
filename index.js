@@ -11,19 +11,15 @@ import noticiasRoutes from "./routes/noticiasRoutes.js";
 import talleresRoutes from "./routes/talleresRoutes.js";
 
 const app = express();
-<<<<<<< HEAD
 const openai = new OpenAI({
   apiKey: process.env.GPT_KEY,
 });
-=======
->>>>>>> fef6b8a3308c22306ae34172a2d277615a5a44c4
 
 // aca se toma el req en json y se crea el req.body que consumimos en los controllers
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 
-<<<<<<< HEAD
 
 app.post("/lain", async (req, res) => {
   console.log(req.body);
@@ -43,8 +39,6 @@ app.post("/lain", async (req, res) => {
 });
 
 
-=======
->>>>>>> fef6b8a3308c22306ae34172a2d277615a5a44c4
 app.use("/eventos", eventosRoutes);
 app.use("/noticias", noticiasRoutes);
 app.use("/talleres", talleresRoutes);
